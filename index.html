@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Resmi Kelas XII TEKNIK 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        nav h1 { font-size: 1.5rem; }
+        nav ul { display: flex; list-style: none; gap: 1.5rem; }
+        nav a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: #3498db; }
+
+        /* Hero Header */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200') center/cover;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 1rem;
+        }
+        .hero h2 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        section { margin-bottom: 3rem; }
+        h2.section-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+            position: relative;
+        }
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #3498db;
+            margin: 0.5rem auto 0;
+        }
+
+        /* Wali Kelas & Pengurus Card */
+        .walikelas-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        .card-walikelas {
+            background: #2c3e50;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .card-walikelas h3 { color: #3498db; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .card-walikelas p { font-size: 1.2rem; font-weight: bold; margin-top: 0.2rem; }
+
+        .grid-pengurus {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .card-pengurus {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-left: 4px solid #3498db;
+        }
+        .card-pengurus h4 { color: #7f8c8d; font-size: 0.85rem; }
+        .card-pengurus p { font-weight: bold; color: #2c3e50; }
+
+        /* Grid Daftar 35 Murid */
+        .grid-siswa {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+        .card-siswa {
+            background: white;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .no-absent {
+            background: #3498db;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .nama-siswa {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        /* Piket Grid */
+        .grid-piket {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+        .card-piket {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .card-piket h3 {
+            background: #3498db;
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 1rem;
+        }
+        .card-piket ol {
+            padding: 1rem 1rem 1rem 2rem;
+            font-size: 0.85rem;
+        }
+        .card-piket li { margin-bottom: 0.3rem; }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            nav { flex-direction: column; gap: 1rem; }
+            .hero h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h1>XII TEKNIK 2</h1>
+        <ul>
+            <li><a href="#struktur">Struktur</a></li>
+            <li><a href="#siswa">Daftar Siswa</a></li>
+            <li><a href="#piket">Jadwal Piket</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h2>Selamat Datang di Kelas XII TEKNIK 2</h2>
+        <p>Website Resmi Kelas • 35 Murid</p>
+    </header>
+
+    <div class="container">
+        <!-- Wali Kelas & Pengurus -->
+        <section id="struktur">
+            <h2 class="section-title">Wali Kelas & Pengurus</h2>
+            
+            <div class="walikelas-container">
+                <div class="card-walikelas">
+                    <h3>Wali Kelas</h3>
+                    <p>Retna Syafitri S.Pd</S></p>
+                </div>
+            </div>
+
+            <div class="grid-pengurus">
+                <div class="card-pengurus">
+                    <h4>Ketua Kelas</h4>
+                    <p>Zhafira</p>
+                </div>
+                <div class="card-pengurus">
+                    <h4>Wakil Ketua</h4>
+                    <p>Nandika Erlan.G</p>
+                </div>
+                <div class="card-pengurus">
+                    <h4>Sekretaris</h4>
+                    <p>1.Nadine
+                        2. Raisya
+                    </p>
+                </div>
+                <div class="card-pengurus">
+                    <h4>Bendahara</h4>
+                    <p>1. Janu
+                        2. Humahera
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daftar 35 Murid -->
+        <section id="siswa">
+            <h2 class="section-title">Daftar Murid (35)</h2>
+            <div class="grid-siswa">
+                <div class="card-siswa"><span class="no-absent">1</span><span class="nama-siswa">Abal Mustad afin</span></div>
+                <div class="card-siswa"><span class="no-absent">2</span><span class="nama-siswa">Ahmad Maulana</span></div>
+                <div class="card-siswa"><span class="no-absent">3</span><span class="nama-siswa">Anin Evatiani</span></div>
+                <div class="card-siswa"><span class="no-absent">4</span><span class="nama-siswa">Arkana Khalish Zahran</span></div>
+                <div class="card-siswa"><span class="no-absent">5</span><span class="nama-siswa">Bonar Johansen Pakpahan</span></div>
+                <div class="card-siswa"><span class="no-absent">6</span><span class="nama-siswa">Daffa Atma Djati</span></div>
+                <div class="card-siswa"><span class="no-absent">7</span><span class="nama-siswa">Dafindra Maulana Azzam</span></div>
+                <div class="card-siswa"><span class="no-absent">8</span><span class="nama-siswa">Dafyna Firdhanianti</span></div>
+                <div class="card-siswa"><span class="no-absent">9</span><span class="nama-siswa">Dimas Adi Afriansyah</span></div>
+                <div class="card-siswa"><span class="no-absent">10</span><span class="nama-siswa">Gracio Innacias Cailen</span></div>
+                <div class="card-siswa"><span class="no-absent">11</span><span class="nama-siswa">Humahera Hinggil.A.H</span></div>
+                <div class="card-siswa"><span class="no-absent">12</span><span class="nama-siswa">Imanuel Adam Winata</span></div>
+                <div class="card-siswa"><span class="no-absent">13</span><span class="nama-siswa">Janu Listianti Hapsari</span></div>
+                <div class="card-siswa"><span class="no-absent">14</span><span class="nama-siswa">keysia Yayang</span></div>
+                <div class="card-siswa"><span class="no-absent">15</span><span class="nama-siswa">Khadeeja achmad</span></div>
+                <div class="card-siswa"><span class="no-absent">16</span><span class="nama-siswa">Livia Salsabila</span></div>
+                <div class="card-siswa"><span class="no-absent">17</span><span class="nama-siswa">Maskur Hidayat</span></div>
+                <div class="card-siswa"><span class="no-absent">18</span><span class="nama-siswa">Mohammad Rifki Ramadhan</span></div>
+                <div class="card-siswa"><span class="no-absent">19</span><span class="nama-siswa">Muhammad Abdullah Ibrahim</span></div>
+                <div class="card-siswa"><span class="no-absent">20</span><span class="nama-siswa">Muhammad Dwi Adi.P</span></div>
+                <div class="card-siswa"><span class="no-absent">21</span><span class="nama-siswa">Muhammad Khoirul Anam</span></div>
+                <div class="card-siswa"><span class="no-absent">22</span><span class="nama-siswa">Muhammad Rayyan Pramana</span></div>
+                <div class="card-siswa"><span class="no-absent">23</span><span class="nama-siswa">Muhammad Refal Ramadhan</span></div>
+                <div class="card-siswa"><span class="no-absent">24</span><span class="nama-siswa">Muhammad Rifqi</span></div>
+                <div class="card-siswa"><span class="no-absent">25</span><span class="nama-siswa">Muhammad Tarmidzi</span></div>
+                <div class="card-siswa"><span class="no-absent">26</span><span class="nama-siswa">Nadine Alya Putri</span></div>
+                <div class="card-siswa"><span class="no-absent">27</span><span class="nama-siswa">Nandika Erlan Ghani</span></div>
+                <div class="card-siswa"><span class="no-absent">28</span><span class="nama-siswa">Nicholas Samuel.V.N</span></div>
+                <div class="card-siswa"><span class="no-absent">29</span><span class="nama-siswa">Ninda Alfitri</span></div>
+                <div class="card-siswa"><span class="no-absent">30</span><span class="nama-siswa">Raisya Nurliah Sari</span></div>
+                <div class="card-siswa"><span class="no-absent">31</span><span class="nama-siswa">Randias Budi Romadon</span></div>
+                <div class="card-siswa"><span class="no-absent">32</span><span class="nama-siswa">Rifqi Hanafi Lubis</span></div>
+                <div class="card-siswa"><span class="no-absent">33</span><span class="nama-siswa">Salma Abdurachman</span></div>
+                <div class="card-siswa"><span class="no-absent">34</span><span class="nama-siswa">Yudhistira Milano Purba</span></div>
+                <div class="card-siswa"><span class="no-absent">35</span><span class="nama-siswa">Zhafirah Putri Perdana</span></div>
+            </div>
+        </section>
+
+        <!-- Jadwal Piket (7 Orang per Hari) -->
+        <section id="piket">
+            <h2 class="section-title">Jadwal Piket Kebersihan</h2>
+            <div class="grid-piket">
+                <div class="card-piket">
+                    <h3>Senin</h3>
+                    <ol>
+                        <li>Abal</li>
+                        <li>Maul</li>
+                        <li>Dafyna</li>
+                        <li>Dwi</li>
+                        <li>Lubis</li>
+                        <li>Salma</li>
+                        <li>Zhafirah</li>
+                    </ol>
+                </div>
+                <div class="card-piket">
+                    <h3>Selasa</h3>
+                    <ol>
+                        <li>Arkana</li>
+                        <li>Bonar</li>
+                        <li>Gracio</li>
+                        <li>Janu</li>
+                        <li>Humahera</li>
+                        <li>Rayyan</li>
+                        <li>Nandika</li>
+                    </ol>
+                </div>
+                <div class="card-piket">
+                    <h3>Rabu</h3>
+                    <ol>
+                        <li>Anin</li>
+                        <li>Keyang</li>
+                        <li>Maskur</li>
+                        <li>Anam</li>
+                        <li>Anam</li>
+                        <li>Refal</li>
+                        <li>Rifqi</li>
+                    </ol>
+                </div>
+                <div class="card-piket">
+                    <h3>Kamis</h3>
+                    <ol>
+                        <li>Daffa</li>
+                        <li>Dimas</li>
+                        <li>Abdul</li>
+                        <li>Jimmy</li>
+                        <li>Nadine</li>
+                        <li>Raisya</li>
+                        <li>Randias</li>
+                    </ol>
+                </div>
+                <div class="card-piket">
+                    <h3>Jumat</h3>
+                    <ol>
+                        <li>Dafin</li>
+                        <li>Adam</li>
+                        <li>Khadeeja</li>
+                        <li>Livia</li>
+                        <li>Rifki</li>
+                        <li>Nicolas</li>
+                        <li>Ninda</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 XII TEKNIK-2 - Didampingi oleh Retna Syafitri S.Pd.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
